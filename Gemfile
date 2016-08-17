@@ -30,6 +30,7 @@ gem 'jquery-rails-cdn'
 gem 'jquery-rails'
 gem 'selectize-rails'
 gem 'hana'
+gem 'uswds-rails', github: '18F/uswds-rails-gem'
 
 group :test do
   gem "codeclimate-test-reporter", require: nil

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/18F/uswds-rails-gem.git
+  revision: ba17136011fa2dd09923e216e947f42171f8df02
+  specs:
+    uswds-rails (1.0.0)
+      sass
+
+GIT
   remote: git://github.com/18f/c2-api-client-ruby.git
   revision: 1404abe563c1a1048c91a319a488be5d6a172936
   specs:
@@ -465,6 +472,7 @@ DEPENDENCIES
   sinatra
   timecop
   uglifier
+  uswds-rails!
   validate_url
   web-console (~> 2.0)
   webmock
