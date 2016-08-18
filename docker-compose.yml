@@ -1,15 +1,21 @@
-db:
-   image: postgres:9
-web:
-    build: .
-    env_file: .env
-    environment:
-       DATABASE_USER: postgres
-       DATABASE_NAME: postgres
-       DATABASE_HOST: db
-    volumes:
-      - .:/app
-    ports:
-      - "3000:3000"
-    links:
-      - db
+version: "2"
+services:
+  db:
+     image: postgres:9
+     volumes:
+       - postgres:/var/lib/postgresql/data
+  web:
+      build: .
+      env_file: .env
+      environment:
+         DATABASE_USER: postgres
+         DATABASE_NAME: postgres
+         DATABASE_HOST: db
+      volumes:
+        - .:/app
+      ports:
+        - "3001:3000"
+      links:
+        - db
+volumes:
+  postgres: {}
