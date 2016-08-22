@@ -4,11 +4,13 @@ class UserPresenter < SimpleDelegator
   end
 
   def admin_sam_status
-    sam_status_presenter.admin_status_text
+    'Hello!'
+    # sam_status_presenter.admin_status_text
   end
 
   def sam_status_message_for(flash)
-    sam_status_presenter.flash_message(flash)
+    'Hello!'
+    #sam_status_presenter.flash_message(flash)
   end
 
   def nav_drawer_partial
@@ -36,28 +38,30 @@ class UserPresenter < SimpleDelegator
   end
 
   def sam_status_label
-    in_sam? ? 'Yes' : 'No'
+    'Yes'
+    #in_sam? ? 'Yes' : 'No'
   end
 
   def small_business_label
-    if in_sam?
-      small_business? ? 'Yes' : 'No'
-    else
-      'N/A'
-    end
+    'N/A'
+    # if in_sam?
+    #   small_business? ? 'Yes' : 'No'
+    # else
+    #   'N/A'
+    # end
   end
 
   def model
     __getobj__
   end
 
-  private
+  # private
 
-  def in_sam?
-    model.sam_accepted?
-  end
+  # def in_sam?
+  #   model.sam_accepted?
+  # end
 
-  def sam_status_presenter
-    SamStatusPresenterFactory.new(model).create
-  end
+  # def sam_status_presenter
+  #   SamStatusPresenterFactory.new(model).create
+  # end
 end
