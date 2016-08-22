@@ -1,7 +1,7 @@
 class DcTimePresenter
   NULL = "&nbsp;".html_safe.freeze
   FORMAT = "%B %d, %Y %r".freeze
-  TIME_ZONE_NAME = 'Eastern Time (US & Canada)'.freeze
+  TIME_ZONE_NAME = ENV["TIME_ZONE_NAME"].freeze || "Singapore".freeze
 
   attr_reader :time
 
