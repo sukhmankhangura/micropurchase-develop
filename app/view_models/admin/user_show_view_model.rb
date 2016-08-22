@@ -9,7 +9,7 @@ class Admin::UserShowViewModel < Admin::BaseViewModel
     [
       { label: 'Email', data: user.email },
       { label: 'Payment URL', data: user.payment_url },
-      { label: 'DUNS number', data: user.duns_number },
+      { label: 'DUNS number', data: 'N/A' },
       { label: 'GitHub username', data: user.github_login },
       { label: 'GitHub ID', data: user.github_id },
       { label: 'SAM', data: sam_status },

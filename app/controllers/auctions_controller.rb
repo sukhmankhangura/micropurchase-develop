@@ -7,7 +7,7 @@ class AuctionsController < ApplicationController
       current_user: current_user
     )
     @auctions = paginated_auctions
-    @auction_collection.sam_status_message_for(flash)
+    #@auction_collection.sam_status_message_for(flash)
   end
 
   def show

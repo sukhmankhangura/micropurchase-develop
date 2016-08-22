@@ -15,11 +15,7 @@ class BidListItem
   end
 
   def veiled_duns_number
-    if auction_available? && bidder_not_user?
-      '[Withheld]'
-    else
-      bid.bidder.duns_number
-    end
+    'N/A'
   end
 
   def amount_to_currency_with_asterisk

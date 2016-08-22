@@ -21,7 +21,8 @@ class AuctionsIndexViewModel
   end
 
   def sam_status_message_for(flash)
-    current_user.decorate.sam_status_message_for(flash)
+    nil
+    #current_user.decorate.sam_status_message_for(flash)
   end
 
   def welcome_message_partial

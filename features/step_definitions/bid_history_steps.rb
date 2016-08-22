@@ -12,7 +12,7 @@ Then(/^I should be able to see the full details for each bid$/) do
   bids.each_with_index do |bid, i|
     row_number = i + 1
     unredacted_bidder_name = bid.bidder.name
-    unredacted_bidder_duns = bid.bidder.duns_number
+    unredacted_bidder_duns = 'N/A'
 
     # check the "name" column
     within(:xpath, cel_xpath(row: row_number, column: 1)) do
@@ -46,7 +46,7 @@ Then(/^I should not see the bidder name or duns for any bid$/) do
   bids.each_with_index do |bid, i|
     row_number = i + 1
     unredacted_bidder_name = bid.bidder.name
-    unredacted_bidder_duns = bid.bidder.duns_number
+    unredacted_bidder_duns = 'N/A'
 
     # check the "name" column
     within(:xpath, cel_xpath(row: row_number, column: 1)) do
@@ -82,7 +82,7 @@ Then(/^I should see my name and DUNS only on my bids$/) do
     row_number = i + 1
     if bid.bidder == @user
       bidder_name = bid.bidder.name
-      bidder_duns = bid.bidder.duns_number
+      bidder_duns = 'N/A'
     else
       bidder_name = '[Name withheld until the auction ends]'
       bidder_duns = '[Withheld]'

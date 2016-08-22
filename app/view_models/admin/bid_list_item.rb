@@ -15,7 +15,7 @@ class Admin::BidListItem
   end
 
   def veiled_duns_number
-    bid.bidder.duns_number
+    'N/A'
   end
 
   def amount_to_currency_with_asterisk
