@@ -7,16 +7,13 @@
     <%= f.input :name %>
     <%= f.input :email %>
 
-    <h3>Placing a bid</h3>
-    Everyone is eligible to place a bid.
+    <h3>Placing a bid and getting paid</h3>
+    <p>Everyone is eligible to place a bid.</p>
 
-    <h3>Getting paid</h3>
-      <p>
-      Before we can pay you, we'll need a location we can visit to issue
-      payment. If you're unfamiliar with processing payments online, see
-      <%= link_to 'our guide for more information', faq_path %>.
-      </p>
-      <%= f.input :payment_url %>
+    <p>
+    Since this is in alpha, payment is by cheque. The cheque can only be cashed in Singapore banks. Please leave your contact number below so we can call you.
+    </p>
+    <%= f.input :payment_url, label: 'Contact number' %>
 
     <%= f.submit class: 'usa-button usa-button-outline' %>
   <% end %>

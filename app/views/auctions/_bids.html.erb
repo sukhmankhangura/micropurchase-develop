@@ -6,7 +6,6 @@
       <thead>
         <tr>
           <th scope="col">Bidder</th>
-          <th scope="col">DUNS</th>
           <th scope="col">Amount</th>
           <th scope="col">Date (EST)</th>
         </tr>
@@ -15,7 +14,6 @@
         <% auction_bids.veiled_bids.each do |bid| %>
           <tr>
             <td><%= bid.veiled_name %></td>
-            <td><%= bid.veiled_duns_number %></td>
             <td><%= bid.amount_to_currency_with_asterisk %></td>
             <td><%= bid.created_at %></td>
           </tr>

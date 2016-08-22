@@ -8,7 +8,7 @@ class Admin::UserShowViewModel < Admin::BaseViewModel
   def data
     [
       { label: 'Email', data: user.email },
-      { label: 'Payment URL', data: user.payment_url },
+      { label: 'Contact number', data: user.payment_url },
       { label: 'DUNS number', data: 'N/A' },
       { label: 'GitHub username', data: user.github_login },
       { label: 'GitHub ID', data: user.github_id },

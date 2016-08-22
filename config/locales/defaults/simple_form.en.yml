@@ -19,7 +19,7 @@ en:
         amount: "Your bid"
       user:
         email: "Email address"
-        credit_card_form_url: "Payment URL"
+        credit_card_form_url: "Contact number"
     placeholders:
       auction:
         title: "A short description of the work"
