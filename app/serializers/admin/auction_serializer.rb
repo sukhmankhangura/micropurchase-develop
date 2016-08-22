@@ -3,7 +3,6 @@ class Admin::AuctionSerializer < ActiveModel::Serializer
 
   attributes(
     :billable_to,
-    :c2_proposal_url,
     :created_at,
     :customer,
     :delivery_due_at,

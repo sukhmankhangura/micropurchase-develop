@@ -8,16 +8,7 @@
     <%= f.input :email %>
 
     <h3>Placing a bid</h3>
-      <p>
-      Before you can bid on an auction, you’ll need to register on SAM.gov, request a
-      DUNS number, and link your SAM.gov profile with your DUNS number. See
-      <%= link_to 'our guide for more information', faq_path %>.
-      </p>
-      <%= f.input :duns_number %>
-      <span class=<%= @view_model.sam_status_icon_class %>></span>
-      <span class=<%= @view_model.sam_status_text_class%>>
-        <%= @view_model.sam_status_text %>
-      </span>
+    Everyone is eligible to place a bid.
 
     <h3>Getting paid</h3>
       <p>

@@ -12,23 +12,6 @@ describe UpdateUser do
 
       Delayed::Worker.new.work_off
       user.reload
-      expect(user.small_business).to eq(true)
-    end
-  end
-
-  context 'when SAM.gov (via Samwise) says the vendor is not a small business' do
-    it 'does not set small_business to true' do
-      user = create(:user)
-      params = ActionController::Parameters.new(
-        id: user.id, user: { duns_number: FakeSamApi::BIG_BUSINESS_DUNS }
-      )
-
-      UpdateUser.new(params, user).save
-
-      Delayed::Worker.new.work_off
-      user.reload
-
-      expect(user.small_business).to eq(false)
     end
   end
 
@@ -111,85 +94,8 @@ describe UpdateUser do
     end
   end
 
-  context 'when user is found and can be edited by current user' do
-    context 'user updates DUNS to invalid DUNS number' do
-      it 'raises validation error' do
-        bad_duns_number = 'BAD'
-        old_duns_number = user.duns_number
-        params = ActionController::Parameters.new(
-          id: user_id, user: { duns_number: bad_duns_number }
-        )
-
-        updater = UpdateUser.new(params, user)
-        updater.save
-
-        expect(updater.errors).to eq('DUNS number format is invalid')
-        expect(user.reload.duns_number).to eq old_duns_number
-      end
-    end
-
-    context 'user updates DUNS to nothing' do
-      it 'does not raise validation error' do
-        params = ActionController::Parameters.new(
-          id: user_id, user: { duns_number: '' }
-        )
-
-        updater = UpdateUser.new(params, user)
-        updater.save
-
-        expect(updater.errors).to eq('')
-      end
-    end
-
-    context 'user updates DUNS to a valid number' do
-      it 'clears the sam id, when it has changed' do
-        params = ActionController::Parameters.new(
-          id: user_id, user: { duns_number: Faker::Company.duns_number }
-        )
-
-        updater = UpdateUser.new(params, user)
-        updater.save
-
-        user.reload
-        expect(user).to be_sam_pending
-      end
-
-      it 'calls the SamAccountReckoner through a delayed job' do
-        params = ActionController::Parameters.new(
-          id: user_id, user: { duns_number: Faker::Company.duns_number }
-        )
-        reckoner = double('reckoner', set_default_sam_status: true)
-        allow(SamAccountReckoner).to receive(:new).with(user).and_return(reckoner)
-        delayed_job = double(set!: true)
-        allow(reckoner).to receive(:delay).and_return(delayed_job)
-
-        updater = UpdateUser.new(params, user)
-        updater.save
-
-        expect(reckoner).to have_received(:delay)
-        expect(delayed_job).to have_received(:set!)
-      end
-    end
-
-    context 'small business vendor changes DUNS to empty' do
-      it 'set small_business to false and sam_status to :duns_blank' do
-        user = create(:user, sam_status: :sam_accepted, small_business: true)
-        params = ActionController::Parameters.new(
-          id: user.id, user: { duns_number: '' }
-        )
-
-        UpdateUser.new(params, user).save
-
-        Delayed::Worker.new.work_off
-        user.reload
-        expect(user.small_business).to eq(false)
-        expect(user.sam_status).to eq('duns_blank')
-      end
-    end
-  end
-
   def user
-    @_user ||= create(:user, sam_status: :sam_accepted)
+    @_user ||= create(:user)
   end
 
   def user_id

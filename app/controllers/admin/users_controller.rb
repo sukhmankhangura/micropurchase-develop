@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
   def update
     user = User.find(params[:id])
 
-    if user.update(user_params)
+    if user.update({})
       flash[:success] = "User with email #{user.email} updated successfully"
       redirect_to admin_admins_path
     else
@@ -20,11 +20,5 @@ class Admin::UsersController < Admin::BaseController
       @view_model = Admin::EditUserViewModel.new(user)
       render :edit
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:contracting_officer)
   end
 end

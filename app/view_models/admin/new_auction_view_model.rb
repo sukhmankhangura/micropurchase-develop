@@ -49,7 +49,7 @@ class Admin::NewAuctionViewModel < Admin::BaseViewModel
   end
 
   def billable_to_options
-    ClientAccount.all.map(&:to_s)
+    ClientAccount.all.map(&:to_s) + ['Debug ClientAccount']
   end
 
   def published
@@ -57,7 +57,7 @@ class Admin::NewAuctionViewModel < Admin::BaseViewModel
   end
 
   def published_options
-    ['unpublished']
+    Auction.publisheds.keys.to_a
   end
 
   def customer_options

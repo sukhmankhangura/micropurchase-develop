@@ -40,11 +40,9 @@ describe Api::V0::AuctionsController do
             expect(authenticated_users_bid(user)['bidder_id']).to_not be_nil
             expect(bidder['id']).to eq user.id
             expect(bidder['name']).to eq user.name
-            expect(bidder['duns_number']).to eq user.duns_number
             expect(bidder['github_id']).to eq user.github_id
             expect(bidder['created_at']).to eq(user.created_at.to_datetime.iso8601)
             expect(bidder['updated_at']).to eq(user.updated_at.to_datetime.iso8601)
-            expect(bidder['sam_status']).to eq user.sam_status.to_s
           end
 
           it 'veils the bids not created by the authenticated user' do
@@ -73,11 +71,9 @@ describe Api::V0::AuctionsController do
             bidder = bid['bidder']
             expect(bidder['id']).to_not be_nil
             expect(bidder['name']).to_not be_nil
-            expect(bidder['duns_number']).to_not be_nil
             expect(bidder['github_id']).to_not be_nil
             expect(bidder['created_at']).to_not be_nil
             expect(bidder['updated_at']).to_not be_nil
-            expect(bidder['sam_status']).to_not be_nil
           end
         end
       end
@@ -96,11 +92,9 @@ describe Api::V0::AuctionsController do
             bidder = bid['bidder']
             expect(bidder['id']).to be_nil
             expect(bidder['name']).to be_nil
-            expect(bidder['duns_number']).to be_nil
             expect(bidder['github_id']).to be_nil
             expect(bidder['created_at']).to be_nil
             expect(bidder['updated_at']).to be_nil
-            expect(bidder['sam_status']).to be_nil
           end
         end
 
@@ -117,11 +111,9 @@ describe Api::V0::AuctionsController do
 
             expect(bidder['id']).to_not be_nil
             expect(bidder['name']).to_not be_nil
-            expect(bidder['duns_number']).to_not be_nil
             expect(bidder['github_id']).to_not be_nil
             expect(bidder['created_at']).to_not be_nil
             expect(bidder['updated_at']).to_not be_nil
-            expect(bidder['sam_status']).to_not be_nil
           end
 
           it 'veils the bids not created by the authenticated user' do
@@ -136,11 +128,9 @@ describe Api::V0::AuctionsController do
               bidder = bid['bidder']
               expect(bidder['id']).to be_nil
               expect(bidder['name']).to be_nil
-              expect(bidder['duns_number']).to be_nil
               expect(bidder['github_id']).to be_nil
               expect(bidder['created_at']).to be_nil
               expect(bidder['updated_at']).to be_nil
-              expect(bidder['sam_status']).to be_nil
             end
           end
         end
@@ -158,11 +148,9 @@ describe Api::V0::AuctionsController do
             bidder = bid['bidder']
             expect(bidder['id']).to_not be_nil
             expect(bidder['name']).to_not be_nil
-            expect(bidder['duns_number']).to_not be_nil
             expect(bidder['github_id']).to_not be_nil
             expect(bidder['created_at']).to_not be_nil
             expect(bidder['updated_at']).to_not be_nil
-            expect(bidder['sam_status']).to_not be_nil
           end
         end
       end

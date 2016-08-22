@@ -26,16 +26,12 @@ class UserExport
   def header_values
     ["Name",
      "Email Address",
-     "Github ID",
-     "In SAM?",
-     "Small Business"]
+     "Github ID"]
   end
 
   def data_values(user)
     [user.name,
      user.email,
-     user.github_id,
-     user.sam_status_label,
-     user.small_business_label]
+     user.github_id]
   end
 end

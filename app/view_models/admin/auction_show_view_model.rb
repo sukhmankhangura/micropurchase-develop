@@ -14,18 +14,6 @@ class Admin::AuctionShowViewModel < Admin::BaseViewModel
     end
   end
 
-  def c2_status_partial
-    if auction.purchase_card == 'default' && auction.c2_status != 'approved'
-      'auctions/status'
-    else
-      'components/null'
-    end
-  end
-
-  def c2_status_presenter
-    C2StatusPresenterFactory.new(auction: auction).create
-  end
-
   def status_presenter
     @_status_presenter ||= StatusPresenterFactory.new(auction).create
   end
@@ -47,7 +35,7 @@ class Admin::AuctionShowViewModel < Admin::BaseViewModel
       'Billable to' => auction.billable_to,
       'Purchase card' => auction.purchase_card,
       'Paid at' => formatted_date(auction.paid_at)
-    }.merge(c2_fields)
+    }
   end
 
   def id
@@ -100,17 +88,6 @@ class Admin::AuctionShowViewModel < Admin::BaseViewModel
 
   def capitalized_type
     auction.type.dasherize.capitalize
-  end
-
-  def c2_fields
-    if auction.purchase_card == 'default'
-      {
-        'C2 proposal URL' => auction.c2_proposal_url,
-        'C2 approval status' => auction.c2_status
-      }
-    else
-      { }
-    end
   end
 
   def auction_status

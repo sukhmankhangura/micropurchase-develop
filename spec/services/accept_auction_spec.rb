@@ -59,41 +59,5 @@ describe AcceptAuction do
         expect(mailer_double).to have_received(:deliver_later)
       end
     end
-    context 'winning bidder has credit card information' do
-      context 'auction is for 18F purchase card' do
-        it 'enqueues the UpdateC2ProposalJob' do
-          auction = create(:auction, :with_bidders)
-          allow(UpdateC2ProposalJob).to receive(:perform_later)
-
-          AcceptAuction.new(auction: auction, payment_url: 'example.com').perform
-
-          expect(UpdateC2ProposalJob).to have_received(:perform_later).with(auction.id)
-        end
-      end
-
-      context 'auction is for other purchase card' do
-        it 'does not enqueue the UpdateC2ProposalJob' do
-          auction = create(:auction, :with_bidders, purchase_card: :other)
-          allow(UpdateC2ProposalJob).to receive(:perform_later)
-
-          AcceptAuction.new(auction: auction, payment_url: 'test.com').perform
-
-          expect(UpdateC2ProposalJob).not_to have_received(:perform_later).with(auction.id)
-        end
-      end
-
-      it 'sets accepted_at' do
-        auction = create(:auction, :with_bidders)
-        time = Time.parse('10:00:00 UTC')
-
-        Timecop.freeze(time) do
-          auction = create(:auction, :with_bidders, accepted_at: nil)
-
-          AcceptAuction.new(auction: auction, payment_url: 'test.com').perform
-
-          expect(auction.accepted_at).to eq time
-        end
-      end
-    end
   end
 end

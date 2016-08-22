@@ -150,7 +150,8 @@ class WinningBidderExport
   end
 
   def duns_data
-    @_duns_data ||= client.get_duns_info(duns: winning_bidder.duns_number)
+    #@_duns_data ||= client.get_duns_info(duns: winning_bidder.duns_number)
+    true
   end
 
   def winning_bidder
@@ -162,6 +163,7 @@ class WinningBidderExport
   end
 
   def client
-    @client ||= Samwise::Client.new(api_key: DataDotGovCredentials.api_key)
+    # @client ||= Samwise::Client.new(api_key: DataDotGovCredentials.api_key)
+    true
   end
 end

@@ -2,18 +2,7 @@ require 'rails_helper'
 
 describe PlaceBidValidator do
   describe '#validate' do
-    it 'validates that the bidder is sam accepted' do
-      user = create(:user, sam_status: :sam_rejected)
-      bid = Bid.new(bidder: user, amount: valid_amount, auction: auction)
-
-      PlaceBidValidator.new.validate(bid)
-
-      expect(bid.errors.full_messages).to include(
-        I18n.t('activerecord.errors.models.bid.permissions')
-      )
-    end
-
-    it 'validates that the auction is availble' do
+    it 'validates that the auction is available' do
       auction = build(:auction, :future)
       bid = Bid.new(bidder: user, amount: valid_amount, auction: auction)
 
@@ -52,7 +41,7 @@ describe PlaceBidValidator do
   end
 
   def user
-    @_user ||= build(:user, sam_status: :sam_accepted)
+    @_user ||= build(:user)
   end
 
   def valid_amount

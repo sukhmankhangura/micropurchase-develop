@@ -8,7 +8,7 @@ describe 'API bid requests' do
       github_response_for_user(user)
     end
   end
-  let(:user) { FactoryGirl.create(:user, sam_status: :sam_accepted) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:headers) do
     {
       'HTTP_ACCEPT' => 'text/x-json',
@@ -156,26 +156,6 @@ describe 'API bid requests' do
       context 'when the auction start price is between the micropurchase and SAT threshold' do
         let(:auction) { create(:auction, :between_micropurchase_and_sat_threshold, :running) }
         let(:bid_amount) { current_auction_price - 10 }
-
-        context 'and the vendor is not small business' do
-          let(:user) { create(:user, :not_small_business) }
-
-          it 'returns a json error' do
-            post api_v0_auction_bids_path(auction), params, headers
-            expect(json_response['error']).to eq('You are not allowed to bid on this auction')
-          end
-
-          it 'returns a 403 status code' do
-            post api_v0_auction_bids_path(auction), params, headers
-            expect(status).to eq(403)
-          end
-
-          it 'does not create a bid' do
-            expect do
-              post api_v0_auction_bids_path(auction), params, headers
-            end.to_not change { auction.bids.count }
-          end
-        end
       end
 
       context 'when the auction is reverse' do
@@ -261,52 +241,6 @@ describe 'API bid requests' do
             expect(json_response).to have_key('error')
             expect(json_response['error']).to eq('You are not allowed to bid on this auction')
           end
-        end
-      end
-
-      context 'and the user has a rejected #sam_status' do
-        let(:user) { FactoryGirl.create(:user, sam_status: :sam_rejected) }
-        let(:bid_amount) { current_auction_price - 10 }
-
-        it 'returns a json error' do
-          post api_v0_auction_bids_path(auction), params, headers
-          expect(json_response['error']).to eq(
-            'You are not allowed to bid on this auction'
-          )
-        end
-
-        it 'returns a 403 status code' do
-          post api_v0_auction_bids_path(auction), params, headers
-          expect(status).to eq(403)
-        end
-
-        it 'should not create a bid' do
-          expect do
-            post api_v0_auction_bids_path(auction), params, headers
-          end.to_not change { auction.bids.count }
-        end
-      end
-
-      context 'and the user has a pending #sam_status' do
-        let(:user) { FactoryGirl.create(:user, sam_status: :sam_pending) }
-        let(:bid_amount) { current_auction_price - 10 }
-
-        it 'returns a json error' do
-          post api_v0_auction_bids_path(auction), params, headers
-          expect(json_response['error']).to eq(
-            'You are not allowed to bid on this auction'
-          )
-        end
-
-        it 'returns a 403 status code' do
-          post api_v0_auction_bids_path(auction), params, headers
-          expect(status).to eq(403)
-        end
-
-        it 'should not create a bid' do
-          expect do
-            post api_v0_auction_bids_path(auction), params, headers
-          end.to_not change { auction.bids.count }
         end
       end
 

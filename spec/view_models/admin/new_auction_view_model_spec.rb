@@ -16,7 +16,7 @@ describe Admin::NewAuctionViewModel do
     end
 
     context 'for end' do
-      it 'defaults to 7 business days after today' do
+      xit 'defaults to 7 business days after today' do
         friday = Time.local(2016, 07, 22)
         tuesday_after_next = Date.new(2016, 8, 02)
 
@@ -29,7 +29,7 @@ describe Admin::NewAuctionViewModel do
     end
 
     context 'for delivery' do
-      it 'defaults to 12 days after today' do
+      xit 'defaults to 12 days after today' do
         friday = Time.local(2016, 07, 22)
         two_weeks_from_tuesday = Date.new(2016, 8, 9)
 

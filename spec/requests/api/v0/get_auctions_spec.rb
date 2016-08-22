@@ -29,11 +29,9 @@ describe Api::V0::Admin::AuctionsController do
             bidder = bid['bidder']
             expect(bidder['id']).to be_nil
             expect(bidder['name']).to be_nil
-            expect(bidder['duns_number']).to be_nil
             expect(bidder['github_id']).to be_nil
             expect(bidder['created_at']).to be_nil
             expect(bidder['updated_at']).to be_nil
-            expect(bidder['sam_status']).to be_nil
           end
         end
 
@@ -49,11 +47,9 @@ describe Api::V0::Admin::AuctionsController do
               bidder = bid['bidder']
               expect(bidder['id']).to_not be_nil
               expect(bidder['name']).to_not be_nil
-              expect(bidder['duns_number']).to_not be_nil
               expect(bidder['github_id']).to_not be_nil
               expect(bidder['created_at']).to_not be_nil
               expect(bidder['updated_at']).to_not be_nil
-              expect(bidder['sam_status']).to_not be_nil
             end
           end
         end
@@ -81,7 +77,6 @@ describe Api::V0::Admin::AuctionsController do
               bidder = bid['bidder']
               expect(bidder['id']).to_not be_nil
               expect(bidder['name']).to_not be_nil
-              expect(bidder['duns_number']).to_not be_nil
               expect(bidder['github_id']).to_not be_nil
               expect(bidder['created_at']).to_not be_nil
               expect(bidder['updated_at']).to_not be_nil

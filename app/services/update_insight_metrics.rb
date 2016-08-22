@@ -23,8 +23,6 @@ class UpdateInsightMetrics
       average_delivery_time,
       average_starting_price,
       average_winning_bid,
-      small_business_count,
-      sam_qualified_vendor_count,
       total_savings
     ]
   end
@@ -113,22 +111,6 @@ class UpdateInsightMetrics
       href: 'chart-winning-bid',
       statistic: Statistics::AverageWinningBid.new.to_s,
       label: 'average winning bid'
-    }
-  end
-
-  def small_business_count
-    {
-      name: 'small_business_count',
-      statistic: UserQuery.new.small_business.count,
-      label: 'small businesses registered'
-    }
-  end
-
-  def sam_qualified_vendor_count
-    {
-      name: 'sam_qualified_vendor_count',
-      statistic: UserQuery.new.in_sam.count,
-      label: 'Sam.gov qualified vendors'
     }
   end
 

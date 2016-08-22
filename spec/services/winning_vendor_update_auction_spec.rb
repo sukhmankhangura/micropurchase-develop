@@ -6,7 +6,7 @@ describe WinningVendorUpdateAuction do
       context 'delivery URL is present' do
         it 'updates the auction with the URL' do
           auction = create(:auction)
-          user = create(:user, sam_status: :sam_accepted)
+          user = create(:user)
           create(:bid, auction: auction, bidder: user)
           url = 'http://www.example.com'
 
@@ -24,7 +24,7 @@ describe WinningVendorUpdateAuction do
       context 'delivery URL is not present' do
         it 'returns false' do
           auction = create(:auction)
-          user = create(:user, sam_status: :sam_accepted)
+          user = create(:user)
           create(:bid, auction: auction, bidder: user)
           url = ''
 
@@ -42,7 +42,7 @@ describe WinningVendorUpdateAuction do
     context 'user is not winning bidder' do
       it 'returns false' do
         auction = create(:auction)
-        user = create(:user, sam_status: :sam_accepted)
+        user = create(:user)
         url = 'http://www.example.com'
 
         update = WinningVendorUpdateAuction.new(

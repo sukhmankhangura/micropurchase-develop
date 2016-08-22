@@ -5,9 +5,6 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Email address</th>
-      <th scope="col">DUNS #</th>
-      <th scope="col">Small business</th>
-      <th scope="col">SAM status</th>
     </tr>
   </thead>
   <tbody>
@@ -15,9 +12,6 @@
       <tr>
         <td><%= link_to user.name, admin_user_path(user.id) %></td>
         <td><%= user.email %></td>
-        <td><%= user.duns_number %></td>
-        <td><%= user.small_business_label %></td>
-        <td><%= user.admin_sam_status %></td>
       </tr>
     <% end %>
   </tbody>

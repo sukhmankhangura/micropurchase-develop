@@ -38,11 +38,7 @@ class Admin::EditAuctionViewModel < Admin::BaseViewModel
   end
 
   def published_options
-    if closed? || auction.c2_status == 'approved'
-      Auction.publisheds.keys.to_a
-    else
-      ['unpublished']
-    end
+    Auction.publisheds.keys.to_a
   end
 
   def customer_options

@@ -1,13 +1,11 @@
 class Admin::UserSerializer < ActiveModel::Serializer
   attributes(
     :created_at,
-    :duns_number,
     :email,
     :github_id,
     :github_login,
     :id,
     :name,
-    :sam_status,
     :updated_at
   )
 

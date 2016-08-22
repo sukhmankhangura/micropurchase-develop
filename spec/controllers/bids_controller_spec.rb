@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe BidsController do
-  let(:current_bidder) { create(:user, sam_status: :sam_accepted) }
+  let(:current_bidder) { create(:user) }
   let(:auction) { create(:auction) }
 
   describe '#index' do

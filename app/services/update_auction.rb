@@ -81,15 +81,7 @@ class UpdateAuction
   end
 
   def winning_bidder_is_eligible_to_be_paid?
-    if auction_is_small_business?
-      reckoner = SamAccountReckoner.new(winning_bidder)
-      reckoner.set!
-      winning_bidder.reload
-
-      user_is_eligible_to_bid?
-    else
-      true
-    end
+    user_is_eligible_to_bid?
   end
 
   def user_is_eligible_to_bid?
@@ -98,10 +90,6 @@ class UpdateAuction
 
   def auction_rules
     RulesFactory.new(auction).create
-  end
-
-  def auction_is_small_business?
-    AuctionThreshold.new(auction).small_business?
   end
 
   def winning_bidder

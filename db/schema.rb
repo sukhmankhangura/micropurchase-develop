@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817115833) do
+ActiveRecord::Schema.define(version: 20160822021233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160817115833) do
     t.datetime "accepted_at"
     t.datetime "rejected_at"
     t.integer  "customer_id"
-    t.integer  "c2_status",       default: 0,    null: false
   end
 
   add_index "auctions", ["customer_id"], name: "index_auctions_on_customer_id", using: :btree
@@ -119,19 +118,12 @@ ActiveRecord::Schema.define(version: 20160817115833) do
 
   create_table "users", force: :cascade do |t|
     t.string   "github_id"
-    t.string   "duns_number",         default: "",    null: false
-    t.string   "name",                default: "",    null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name",         default: "", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "email"
     t.string   "github_login"
-    t.string   "payment_url",         default: "",    null: false
-    t.integer  "sam_status",          default: 0,     null: false
-    t.boolean  "contracting_officer", default: false, null: false
-    t.boolean  "small_business",      default: false, null: false
+    t.string   "payment_url",  default: "", null: false
   end
-
-  add_index "users", ["contracting_officer"], name: "index_users_on_contracting_officer", where: "(contracting_officer = true)", using: :btree
-  add_index "users", ["sam_status"], name: "index_users_on_sam_status", using: :btree
 
 end

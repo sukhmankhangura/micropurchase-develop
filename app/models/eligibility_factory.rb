@@ -6,10 +6,6 @@ class EligibilityFactory
   end
 
   def create
-    if start_price_threshold.small_business?
-      SmallBusinessEligibility.new
-    else
-      InSamEligibility.new
-    end
+    FullEligibility.new
   end
 end

@@ -11,7 +11,6 @@ FactoryGirl.define do
     summary Faker::Lorem.paragraph
     description Faker::Lorem.paragraphs(3, true).join("\n\n")
     delivery_due_at { quartile_minute(Time.now + 10.days) }
-    purchase_card :default
 
     trait :sealed_bid_with_tie do
       sealed_bid
@@ -34,7 +33,7 @@ FactoryGirl.define do
 
     trait :winning_vendor_is_non_small_business do
       after(:create) do |auction|
-        create(:bid, :from_non_small_business, auction: auction)
+        create(:bid, auction: auction)
       end
     end
 
@@ -64,7 +63,7 @@ FactoryGirl.define do
     end
 
     trait :between_micropurchase_and_sat_threshold do
-      association :user, factory: :contracting_officer
+      association :user
       start_price do
         rand(AuctionThreshold::MICROPURCHASE + 1..AuctionThreshold::SAT)
       end
@@ -129,11 +128,6 @@ FactoryGirl.define do
       paid_at nil
     end
 
-    trait :c2_approved do
-      c2_proposal_url 'https://c2-dev.18f.gov/proposals/2486'
-      c2_status :approved
-    end
-
     trait :published do
       published :published
     end
@@ -160,7 +154,6 @@ FactoryGirl.define do
       delivery_due_at_expired
       delivered
       accepted
-      c2_approved
       paid
     end
 
@@ -168,7 +161,6 @@ FactoryGirl.define do
       delivery_due_at_expired
       accepted
       delivered
-      c2_approved
       not_paid
     end
 
