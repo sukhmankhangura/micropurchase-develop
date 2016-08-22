@@ -81,10 +81,6 @@ class AuctionListItem
 
   private
 
-  def for_small_business?
-    AuctionThreshold.new(auction).small_business?
-  end
-
   def available?
     auction_status.available?
   end

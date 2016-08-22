@@ -79,11 +79,7 @@ class Admin::AuctionShowViewModel < Admin::BaseViewModel
   private
 
   def eligibility_label
-    if AuctionThreshold.new(auction).small_business?
-      'Small-business only'
-    else
-      'SAM.gov only'
-    end
+    'All eligible'
   end
 
   def capitalized_type

@@ -18,7 +18,7 @@ class Admin::DraftListItem < Admin::BaseViewModel
   end
 
   def c2_proposal_status
-    c2_proposal_status_presenter.status
+    'N/A'
   end
 
   def started_at
@@ -31,11 +31,5 @@ class Admin::DraftListItem < Admin::BaseViewModel
 
   def delivery_due_at
     DcTimePresenter.convert_and_format(auction.delivery_due_at)
-  end
-
-  private
-
-  def c2_proposal_status_presenter
-    C2StatusPresenterFactory.new(auction: auction).create
   end
 end
