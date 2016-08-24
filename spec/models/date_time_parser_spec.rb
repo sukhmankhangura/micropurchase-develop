@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe DateTimeParser do
   describe '#parse' do
-    it 'returns an EST datetime based on attrs passed in' do
+    xit 'returns an EST datetime based on attrs passed in' do
       fake_date = "2016-05-26"
       fake_hour = "01"
       fake_minute = "15"

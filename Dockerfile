@@ -14,8 +14,8 @@ RUN bundle install
 RUN gem install foreman
 RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/wait-for-it
-#CMD wait-for-it db:5432 && bundle exec rake db:create:all || true && \
-#  bundle exec rake db:migrate db:test:prepare && \
-#  bundle exec rake db:seed && \
-#  foreman start -p 3000
-CMD wait-for-it db:5432 && rails s -b 0.0.0.0 -p 3000
+CMD wait-for-it db:5432 && \
+  (bundle exec rake db:create || true) && \
+  bundle exec rake db:migrate && \
+  bundle exec rake assets:precompile && \
+  foreman start -p 3000

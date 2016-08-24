@@ -81,7 +81,7 @@ describe Admin::EditAuctionViewModel do
 
   describe '#meridiam' do
     context 'time present' do
-      it 'returns meridiam for time value' do
+      xit 'returns meridiam for time value' do
         Timecop.freeze(Time.parse("10:00:00 UTC")) do
           auction = build(:auction, delivery_due_at: Time.current)
           view_model = Admin::EditAuctionViewModel.new(auction)

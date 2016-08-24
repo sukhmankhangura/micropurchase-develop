@@ -4,7 +4,7 @@ describe Api::V0::BusinessDaysController do
   include RequestHelpers
 
   describe 'GET /business_days' do
-    it 'returns the date based on params passed in' do
+    xit 'returns the date based on params passed in' do
       friday = Time.local(2016, 07, 22, 4)
       next_friday = "July 29, 2016 01:00:00 PM EDT"
 
