@@ -1,21 +1,30 @@
 version: "2"
 services:
   db:
-     image: postgres:9
-     volumes:
-       - postgres:/var/lib/postgresql/data
+    image: postgres:9
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - gbuy
   web:
-      build: .
-      env_file: .env
-      environment:
-         DATABASE_USER: postgres
-         DATABASE_NAME: postgres
-         DATABASE_HOST: db
-      volumes:
-        - .:/app
-      ports:
-        - "3001:3000"
-      links:
-        - db
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_USER: postgres
+      DATABASE_NAME: postgres
+      DATABASE_HOST: db
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3000"
+    links:
+      - db
+    networks:
+      - gbuy
+      - nginx
 volumes:
   postgres: {}
+networks:
+  gbuy: {}
+  nginx:
+    external: true
