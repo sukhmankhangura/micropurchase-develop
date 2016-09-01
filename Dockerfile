@@ -18,4 +18,4 @@ CMD wait-for-it db:5432 && \
   (bundle exec rake db:create || true) && \
   bundle exec rake db:migrate && \
   bundle exec rake assets:precompile && \
-  foreman start -p 3001
+  foreman start -p 3000
