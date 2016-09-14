@@ -12,7 +12,7 @@
 }
 
 .header-side {
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   color: $color-white;
 
   a {
@@ -60,7 +60,7 @@
   }
 
   .subtitle {
-    font-size: $base-font-size;
-    font-style: italic;
+    margin-top: 4px;
+    font-size: $small-font-size;
   }
 }
