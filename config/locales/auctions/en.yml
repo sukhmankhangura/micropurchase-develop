@@ -20,8 +20,7 @@ en:
           header: "Pending payment"
           body: >
             Your <a href=%{delivery_url}>pull request</a> was accepted! Payment of %{amount} will be issued
-            to %{payment_url} as soon as possible. You will receive an email once
-            payment is made.
+            to %{payment_url} as soon as possible. We will get in touch with you to obtain your payment details. If you have any further enquiries, please email us at ace@ida-gds.com.
         work_in_progress:
           header: 'Work in progress'
           body: >
@@ -33,13 +32,13 @@ en:
         pending_acceptance:
           header: 'Pending acceptance'
           body: >
-            18F is working to determine if <a href=%{delivery_url}>your pull
+            We are working to determine if <a href=%{delivery_url}>your pull
             request</a> meets the auction's acceptance criteria. You will receive an email
             once this determination is made.
         payment_confirmation_needed:
           header: "Payment confirmation needed"
           body: >
-            18F issued payment on %{payment_date} via your payment URL. Please
+            We issued payment on %{payment_date}. Please
             confirm that you've received payment.
           action: "Got it!"
         payment_confirmed:
@@ -51,7 +50,7 @@ en:
             not_verified:
               header: Please update your profile
               body: >
-                Your profile must contain a valid DUNS number before you can place a bid. Please
+                Your profile must contain a valid contact number before you can place a bid. Please
                 <a href="/profile">update your profile</a>.
             not_small_business:
               header: You are ineligible to bid
