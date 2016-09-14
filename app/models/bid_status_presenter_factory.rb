@@ -37,8 +37,6 @@ class BidStatusPresenterFactory
       BidStatusPresenter::OverUserIsWinnerPendingPayment
     elsif auction.delivery_url.present?
       BidStatusPresenter::OverUserIsWinnerWorkInProgress
-    elsif auction.c2_status == 'payment_confirmed'
-      BidStatusPresenter::OverUserIsWinnerPaymentConfirmed
     else
       BidStatusPresenter::OverUserIsWinner
     end
