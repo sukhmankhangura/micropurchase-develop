@@ -9,17 +9,12 @@
       <ul class="usa-unstyled-list">
         <li class="usa-width-one-sixth usa-footer-primary-content">
         <%= link_to 'About',
-          'https://idagds.github.io/gds-hive/',
+          '/faq',
           class: 'usa-footer-primary-link' %>
         </li>
         <li class="usa-width-one-sixth usa-footer-primary-content">
         <%= link_to 'Feedback',
           'https://goo.gl/forms/lKdnNHYdQHEFhaTw1',
-          class: 'usa-footer-primary-link' %>
-        </li>
-        <li class="usa-width-one-sixth usa-footer-primary-content">
-        <%= link_to 'Insights',
-          insights_path,
           class: 'usa-footer-primary-link' %>
         </li>
         <li class="usa-width-one-third usa-footer-primary-content">
@@ -45,7 +40,9 @@
   <div class="usa-footer-secondary_section">
     <div class="usa-grid">
       <div class="usa-footer-logo">
-        <%= image_tag "hive-logo.png", class: 'usa-footer-slim-logo-img logo-img', alt: 'Logo image' %>
+        <a href='https://idagds.github.io/gds-hive/'>
+          <%= image_tag "hive-logo.png", class: 'usa-footer-slim-logo-img logo-img', alt: 'Logo image' %>
+        </a>
       </div>
     </div>
   </div>
