@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'authentications#create'
   get '/logout', to: 'authentications#destroy'
+  get '/about', to: 'application#about'
   get '/faq', to: 'application#faq'
   get '/privacy_policy', to: 'application#privacy_policy'
   get '/auctions/rules/sealed-bid', to: 'auctions#sealed_bid_auction_rules'
