@@ -29,7 +29,7 @@ en:
           winning vendor is %{vendor_name} and the final price of the auction is
           %{winning_bid_amount}."
         para_2: "You may examine the delivered code here: %{delivery_url} "
-        para_3: "Questions? Reply to this email."
+        para_3: "Questions? Email us at ace@ida-gds.com."
         sign_off: "Sincerely,"
         from: "The govBuy Team"
       winning_bidder_missing_payment_method:
@@ -37,7 +37,7 @@ en:
         para_1: "govBuy wants to pay you for your work! Our team recently accepted your work on \"%{auction_title}\".
           We'd like to pay you %{amount}, but we need you to tell us where we can enter our credit card information.
           To get paid, please go to %{profile_url} and enter a payment URL."
-        para_3: "Questions? Reply to this email."
+        para_3: "Questions? Email us at ace@ida-gds.com."
         sign_off: "Sincerely,"
         from: "The govBuy Team"
       auction_paid_winning_vendor_notification:
@@ -46,6 +46,6 @@ en:
         para_1: >
           Payment in the amount of %{amount} has recently been made to
           %{payment_url} for %{auction_title}. Please let us know if you've received it:
-        para_3: "Questions? Reply to this email."
+        para_3: "Questions? Email us at ace@ida-gds.com."
         sign_off: "Sincerely,"
         from: "The govBuy Team"
