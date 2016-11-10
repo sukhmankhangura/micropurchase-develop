@@ -6,7 +6,7 @@ class AuctionMailer < ActionMailer::Base
       to: bidder.email,
       subject: I18n.t('mailers.auction_mailer.losing_bidder_notification.subject'),
       from: SMTPCredentials.default_from,
-      reply_to: 'micropurchase@gsa.gov'
+      reply_to: 'ace@ida-gds.com'
     )
   end
 
@@ -17,7 +17,7 @@ class AuctionMailer < ActionMailer::Base
       to: bidder.email,
       subject: I18n.t('mailers.auction_mailer.winning_bidder_notification.subject'),
       from: SMTPCredentials.default_from,
-      reply_to: 'micropurchase@gsa.gov'
+      reply_to: 'ace@ida-gds.com'
     )
   end
 
@@ -29,7 +29,7 @@ class AuctionMailer < ActionMailer::Base
       to: customer.email,
       subject: I18n.t('mailers.auction_mailer.auction_accepted_customer_notification.subject'),
       from: SMTPCredentials.default_from,
-      reply_to: 'micropurchase@gsa.gov'
+      reply_to: 'ace@ida-gds.com'
     )
   end
 
@@ -41,7 +41,7 @@ class AuctionMailer < ActionMailer::Base
       to: @winning_bid.bidder.email,
       subject: I18n.t('mailers.auction_mailer.winning_bidder_missing_payment_method.subject'),
       from: SMTPCredentials.default_from,
-      reply_to: 'micropurchase@gsa.gov'
+      reply_to: 'ace@ida-gds.com'
     )
   end
 
@@ -56,7 +56,7 @@ class AuctionMailer < ActionMailer::Base
         auction_title: @auction.title
       ),
       from: SMTPCredentials.default_from,
-      reply_to: 'micropurchase@gsa.gov'
+      reply_to: 'ace@ida-gds.com'
     )
   end
 end
