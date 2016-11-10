@@ -1,15 +1,15 @@
 require_relative '../../lib/conditional_asset_compressor'
 
 Rails.application.configure do
-  # config.action_mailer.smtp_settings = {
-  #   address: 'smtp.mandrillapp.com',
-  #   port: 587,
-  #   domain: ENV['SMTP_DOMAIN'] || "18f.gsa.gov",
-  #   user_name: SMTPCredentials.smtp_username,
-  #   password: SMTPCredentials.smtp_password,
-  #   authentication: 'login',
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: ENV['SMTP_DOMAIN'] || 'gmail.com',
+    user_name: SMTPCredentials.smtp_username,
+    password: SMTPCredentials.smtp_password,
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = false

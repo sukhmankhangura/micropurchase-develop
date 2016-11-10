@@ -4,7 +4,7 @@
     <%= options_for_select((1..12).to_a, selected: auction.hour_default(field)) %>
   </select>
   <select class="usa-width-one-third" name="auction[<%=field%>_at(2i)]" id="auction_<%=field%>_at_2i">
-    <%= options_for_select(['00', '15', '30', '45'], selected: auction.minute_default(field)) %>
+    <%= options_for_select((0..59).to_a, selected: auction.minute_default(field)) %>
   </select>
   <select class="usa-width-one-third" name="auction[<%=field%>_at(3i)]" id="auction_<%=field%>_at_3i">
     <%= options_for_select(['AM', 'PM'], selected: auction.meridiem_default(field)) %>

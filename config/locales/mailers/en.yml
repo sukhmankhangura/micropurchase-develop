@@ -5,14 +5,14 @@ en:
         para_1: "We regret to inform you that the auction period for %{auction_title} recently
           closed and that your bid was not the lowest bid. For more information please see the auction details
           here %{auction_url}. Better luck next time!"
-        para_2: "And speaking of next time, keep an eye out for more open and upcoming auctions here: micropurchase.18f.gov."
+        para_2: "And speaking of next time, keep an eye out for more open and upcoming auctions here: buy.gds-gov.tech."
         sign_off: "Sincerely,"
-        from: "The 18F Micro-purchase team"
-        subject: "18F Micro-purchase Auction Status"
+        from: "The govBuy Team"
+        subject: "govBuy Auction Status"
       winning_bidder_notification:
         para_1: "Congratulations! You have the winning bid for %{auction_title} (%{auction_url}).
           This means that you have the opportunity to get paid %{bid_amount}
-          if you deliver the requested work by %{auction_delivery_deadline} Eastern Time.
+          if you deliver the requested work by %{auction_delivery_deadline} Singapore Standard Time.
           If you have any questions about the issue, please add a comment to %{auction_issue_url}."
         para_2: "We encourage delivery of code (even if it's incomplete) early and often
           so that we can work out any issues that arise before the deadline.
@@ -21,7 +21,7 @@ en:
           on the auction's page and click \"start work\": %{auction_url}"
         para_3: "Thanks for participating and we look forward to seeing what you can do!"
         sign_off: "Sincerely,"
-        from: "The 18F Micro-purchase team"
+        from: "The govBuy Team"
         subject: "Congratulations: You have the winning bid!"
       auction_accepted_customer_notification:
         subject: "Your auction has been successfully delivered!"
@@ -31,21 +31,21 @@ en:
         para_2: "You may examine the delivered code here: %{delivery_url} "
         para_3: "Questions? Reply to this email."
         sign_off: "Sincerely,"
-        from: "The 18F Micro-purchase team"
+        from: "The govBuy Team"
       winning_bidder_missing_payment_method:
-        subject: "Please update your profile so Micro-purchase can pay you for your great work!"
-        para_1: "18F wants to pay you for your work! Our team recently accepted your work on \"%{auction_title}\".
+        subject: "Please update your profile so govBuy can pay you for your great work!"
+        para_1: "govBuy wants to pay you for your work! Our team recently accepted your work on \"%{auction_title}\".
           We'd like to pay you %{amount}, but we need you to tell us where we can enter our credit card information.
           To get paid, please go to %{profile_url} and enter a payment URL."
-        para_2: "Questions? Please contact us at microupurchase@gsa.gov"
+        para_3: "Questions? Reply to this email."
         sign_off: "Sincerely,"
-        from: "The 18F Micro-purchase team"
+        from: "The govBuy Team"
       auction_paid_winning_vendor_notification:
         subject: "Please confirm payment for %{auction_title}"
         greeting: "Dear %{vendor_name},"
         para_1: >
           Payment in the amount of %{amount} has recently been made to
           %{payment_url} for %{auction_title}. Please let us know if you've received it:
-        para_2: "Questions? Contact micropurchase@gsa.gov."
+        para_3: "Questions? Reply to this email."
         sign_off: "Sincerely,"
-        from: "The 18F Micro-purchase team"
+        from: "The govBuy Team"

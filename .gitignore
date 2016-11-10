@@ -19,5 +19,6 @@
 /public/capybara.html
 /public/commit.txt
 .env
+.idea/*
 
 cf-ssh.yml
