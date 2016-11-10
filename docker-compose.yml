@@ -13,15 +13,25 @@ services:
       DATABASE_USER: postgres
       DATABASE_NAME: postgres
       DATABASE_HOST: db
-    volumes:
-      - .:/app
-    links:
+    depends_on:
       - db
     networks:
       - gbuy
       - nginx
     expose:
       - 3000
+  delayed_job:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_USER: postgres
+      DATABASE_NAME: postgres
+      DATABASE_HOST: db
+    depends_on:
+      - db
+    networks:
+      - gbuy
+    command: [bin/delayed_job, run]
 volumes:
   postgres: {}
 networks:
