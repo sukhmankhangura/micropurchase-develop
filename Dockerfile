@@ -1,21 +1,24 @@
 FROM ruby:2.3.1
-RUN apt-get update -qq && apt-get install -y \
-  build-essential \
-  libpq-dev \
-  nodejs \
-  nodejs-legacy \
-  npm
-RUN npm install -g phantomjs-prebuilt
-RUN mkdir /app
+RUN set -x \
+    && apt-get update -qq \
+    && apt-get install -y \
+          build-essential \
+          libpq-dev \
+          nodejs \
+          nodejs-legacy \
+          npm \
+    && npm install -g phantomjs-prebuilt \
+    && gem install foreman bundler \
+    && curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /usr/local/bin/wait-for-it \
+    && chmod +x /usr/local/bin/wait-for-it
+
 WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install
-RUN gem install foreman
-RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /usr/local/bin/wait-for-it
-RUN chmod +x /usr/local/bin/wait-for-it
-CMD wait-for-it db:5432 && \
-  (bundle exec rake db:create || true) && \
-  bundle exec rake db:migrate && \
-  bundle exec rake assets:precompile && \
-  foreman start -p 3000
+
+COPY Gemfile Gemfile.lock /app/
+RUN bundle install --frozen
+
+COPY ./docker-entrypoint.sh ./
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["--"]
+
+COPY . /app
